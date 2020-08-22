@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -23,25 +23,27 @@
       <p class="alert"><%= alert %></p>
     </div>
     <% end %>
-     <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
       <div class="navbar-brand text-decoration-none">
         <%= link_to root_path, class:"navbar-item link_class" do %>
           <h1 class="title is-5">Flanger</h1>
         <% end  %>
-      <div class="navbar-burger burger" data-target="navbar">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
       <div class="navbar-item">
         <%= link_to "About", about_path, class: "link_class" %>
       </div>
       <div class="navbar-item">
         <%= link_to "Contact", contact_path, class: "link_class" %>
       </div>
+      <div class="navbar-burger burger" data-target="navbar">
+       <button class="navbar-toggler" type="button" onclick="test();" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      </div>
     </div>
 
-      <div id="navbar" class="navbar-menu">
+      <div class="collapse navbar-menu" id="navbarToggleExternalContent">
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
@@ -206,3 +208,12 @@
 <!-- Footer -->
   </body>
 </html>
+
+
+<script>
+ function test() {
+   $("#navbarToggleExternalContent").toggle("slow");
+   $(".navbar-menu").css("background-color", "#ffdd57");
+   $(".navbar-menu").css("width", "100% !important;");
+ }
+</script>

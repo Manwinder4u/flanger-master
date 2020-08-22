@@ -27,6 +27,14 @@
         <%= link_to root_path, class:"navbar-item link_class" do %>
           <h1 class="title is-5">Flanger</h1>
         <% end  %>
+
+      <div class="navbar-burger burger" data-target="navbar">
+        <button class="navbar-toggler" type="button" onclick="test();" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span>
+ <span class="navbar-toggler-icon"></span>
+ <span class="navbar-toggler-icon"></span>
+      </div>
+
       <div class="navbar-item">
         <%= link_to "About", about_path, class: "link_class" %>
       </div>

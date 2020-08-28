@@ -15,6 +15,7 @@
 
     <div class="col-lg-4 instrument border border-light mt-4 mr-0 mb-4">
       <div class="instrument-thumb">
+      <!-- adding unless here due to error on production env. -->
       <%= link_to image_tag(instrument.image_url(:thumb)), instrument unless instrument.image.blank? %>
 
       <% if instrument.condition? %>

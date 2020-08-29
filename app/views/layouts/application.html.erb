@@ -4,9 +4,9 @@
     <title>Flanger</title>
     <%= csrf_meta_tags %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity: 'sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm',  crossorigin: 'anonymous' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -18,200 +18,13 @@
       </div>
     <% end %>
     <% if flash[:alert] %>
-    <div class="notification is-danger global-notification">
-      <p class="alert"><%= alert %></p>
-    </div>
+      <div class="notification is-danger global-notification">
+        <p class="alert"><%= alert %></p>
+      </div>
     <% end %>
-  <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand text-decoration-none">
-        <%= link_to root_path, class:"navbar-item link_class" do %>
-          <h1 class="title is-5">Flanger</h1>
-        <% end  %>
-
-      <div class="navbar-burger burger" data-target="navbar">
-        <button class="navbar-toggler" type="button" onclick="test();" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"> 
-        <span class="navbar-toggler-icon"></span>
- <span class="navbar-toggler-icon"></span>
- <span class="navbar-toggler-icon"></span>
-      </div>
-
-      <div class="navbar-item">
-        <%= link_to "About", about_path, class: "link_class" %>
-      </div>
-      <div class="navbar-item">
-        <%= link_to "Contact", contact_path, class: "link_class" %>
-      </div>
-      <div class="navbar-burger burger" data-target="navbar">
-       <button class="navbar-toggler" type="button" onclick="test();" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      <span class="navbar-toggler-icon"></span>
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      </div>
-    </div>
-
-      <div class="collapse navbar-menu" id="navbarToggleExternalContent">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="field is-grouped">
-
-            <% if total_cart_items %>
-              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
-              <span class="icon is-small">
-                <i class="fa fa-shopping-cart"></i>
-              </span>
-              <span>Cart
-                <%= cart_count_over_one %>
-                </span>
-              <% end %>
-            <% end %>
-
-            <% if user_signed_in? %>
-              <%= link_to 'Sell', new_instrument_path, class: "navbar-item button is-dark" %>
-
-              <div class="navbar-item has-dropdown is-hoverable">
-                <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
-                <div class="navbar-dropdown is-right">
-                  <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
-                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
-                </div>
-              </div>
-            <% else %>
-
-            <%= link_to "Sign In", new_user_session_path, class:"navbar-item button is-warning" %>
-            <%= link_to "Sign up", new_user_registration_path, class:"navbar-item button is-warning"%>
-
-            <% end %>
-
-            </div>
-          </div>
-        </div>
-    </div>
-  </nav>
-
-  <%= yield(:header) %>
-  <div class="container"><%= yield %></div>
-
-<!-- Footer -->
-<footer class="page-footer font-small blue-grey lighten-5">
-
-  <div style="background-color: #21d192;">
-    <div class="container">
-
-      <!-- Grid row-->
-      <div class="row py-4 d-flex align-items-center">
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Get connected with us on social networks!</h6>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-          <!-- Facebook -->
-          <a class="fa facebook" href="https://www.facebook.com/">
-            <i class="fab fa-facebook-f white-text mr-4"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="fa twitter" href="https://twitter.com/"> 
-            <i class="fab fa-twitter white-text mr-4"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="fa google" href="https://mail.google.com/">
-            <i class="fa fa-google-plus white-text mr-4"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="fa linkdin" href="https://www.linkedin.com/login">
-            <i class="fa fa-linkedin white-text mr-4"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="fa instagram" href="https://www.instagram.com/">
-            <i class="fab fa-instagram white-text"> </i>
-          </a>
-
-        </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row-->
-
-    </div>
-  </div>
-
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
-
-    <!-- Grid row -->
-    <div class="row mt-3 dark-grey-text">
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-4 col-xl-3 mb-4">
-
-        <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Company name</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.</p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <%= link_to "Home", "/", class: "link" %>
-        </p>
-        <p>
-          <%= link_to "Contact us", contact_path, class: "link" %>
-        </p>
-        <p>
-          <%= link_to "About", about_path, class: "link" %>
-        </p>
-        <p>
-          <%= link_to "Sign up", "/users/sign_in", class: "link" %>
-        </p>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-md-0 mb-4">
-
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
-        <p>
-          <i class="fa fa-envelope-open mr-3"></i> info@example.com</p>
-        <p>
-          <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
-        <p>
-          <i class="fa fa-mobile mr-3"></i> + 01 234 567 89</p>
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
-    <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+    <%= render 'layouts/header'%>
+      <%= yield(:header) %>
+    <div class="container"><%= yield %></div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
